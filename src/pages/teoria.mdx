@@ -18,7 +18,7 @@ In particolare, Bétsie sfrutta le curve cubiche di Bézier (di grado 3, $k = 3$
 di controllo costituito da $k + 1 = 4$ punti in $\E^2$ solitamente indicati con $\{\P_0, \P_1, \P_2, \P_3\}$. 
 Le coordinate dei punti di controllo sono sufficienti a determinare l'equazione della curva di Bézier associata 
 tramite l'**algoritmo di de Casteljau**, da cui si ottiene un'equazione del tipo:
-<p style="text-align: center;">$\P(t) = (1 - t)^3\cdot\P_0 + 3(1 - t)^2t\cdot\P_1 + 3(1-t)t^2\cdot\P_0 + t^3\cdot\P_3$</p>
+<p style="text-align: center;">$\P(t) = (1 - t)^3\cdot\P_0 + 3(1 - t)^2t\cdot\P_1 + 3(1-t)t^2\cdot\P_2 + t^3\cdot\P_3$</p>
 che, introducendo i **polinomi di Bernstein** di grado $k$ in forma generale:\
 $B^k_i(t) = \begin{pmatrix} k \\ i \end{pmatrix}(1 - t)^{k - i} \cdot t^i$ con $i = 0, \dots, k$ si può riscrivere come:
 <p style="text-align: center;">$\displaystyle\P(t) = \sum_{i = 0}^{3}B^3_i(t)\cdot \P_i$ .</p>

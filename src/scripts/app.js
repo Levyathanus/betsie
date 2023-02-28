@@ -1,8 +1,7 @@
 // IMPORTS
-import pointInSvgPolygon from "point-in-svg-polygon";
 import html2canvas from "html2canvas";
 /*
-The following license (BSD-3-Clause) applies to the point-in-svg-polygon module and to the current file (app.js):
+The following license (BSD-3-Clause) applies to the point-in-svg-polygon module, to the current file (app.js) and to worker.js:
 Copyright (c) 2023, Michele Zenoni
 Copyright (c) 2016, Ruben Vermeersch
 Copyright (c) 2013, Kevin Lindsey
@@ -319,7 +318,6 @@ function fileToDataUri(field) {
 }
 
 async function handleFileToImage(file, onLoadFun) {
-  // displaying the uploaded image
   const image = document.createElement("img");
   image.src = await fileToDataUri(file);
   image.addEventListener("load", () => { onLoadFun(image); });
@@ -781,7 +779,7 @@ function editImagePaste(ctImage, ctCanvas, retry = false) {
   hideElementById("cut-image-canvas");
   showElement(dropDiv);
   topNote.innerHTML = "<b>Seleziona/trascina</b> l'immagine da usare come sfondo nella sezione qui sotto*:";
-  bottomNote.innerHTML = "<b>Nota:</b> le dimensioni massime per l'immagine sono: 1280x720px. Se l'immagine caricata ha dimensioni superiori verrà riscalata a 1280x720px (formato 16:9). <br/>* Le dimensioni dell'immagine di sfondo devono essere più grandi della porzione ritagliata.";
+  bottomNote.innerHTML = "<b>Nota:</b> le dimensioni massime per l'immagine sono: 1280x720px o 720x1280px. Se l'immagine caricata ha dimensioni superiori verrà riscalata a 1280x720px (formato 16:9) o 720x1280px (formato 9:16). <br/>* Le dimensioni dell'immagine di sfondo devono essere più grandi della porzione ritagliata.";
   showElement(galleryDiv);
   galleryLink.removeEventListener("click", handleGalleryClick);
   galleryLink.addEventListener("click", (e) => { showGallery((e) => {
