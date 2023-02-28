@@ -31,7 +31,6 @@ export default defineConfig({
       [
         astroLayouts,
         {
-          "pages/blog/**/*.mdx": "@layouts/BlogLayout.astro",
           "pages/*.mdx": "@layouts/BlogLayout.astro",
         },
       ],
