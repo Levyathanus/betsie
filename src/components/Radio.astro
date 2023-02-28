@@ -1,0 +1,15 @@
+---
+export interface Props {
+  id: string;
+  text: string;
+  checked?: boolean;
+  name?: string;
+  style?: string;
+}
+let { id, text, checked, name, style } = Astro.props;
+let parentDivId = id + "-parent-div";
+---
+<div id={parentDivId} class="flex items-center mb-4" style={style}>
+  <input id={id} type="radio" checked={checked} value="" name={name} class="w-4 h-4 text-zinc-600 bg-gray-100 border-gray-300 focus:ring-zinc-500 dark:focus:ring-white dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-white">
+  <label for={id} class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{text}</label>
+</div>

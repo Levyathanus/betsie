@@ -1,0 +1,58 @@
+[
+  {
+    "id": "flower",
+    "title": "Flower",
+    "image": "images/flower.jpg",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "id": "geometry",
+    "title": "Geometry",
+    "image": "images/geometry.jpg",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "id": "jules-beagle-unsplash",
+    "title": "Dog",
+    "image": "images/jules-beagle-unsplash.jpg",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "id": "phone-hand-city",
+    "title": "Phone",
+    "image": "images/phone-hand-city.jpg",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "id": "shapes-bg-white",
+    "title": "Figures White Background",
+    "image": "images/figures-bg-white.png",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "id": "shapes-bg-black",
+    "title": "Figures Black Background",
+    "image": "images/figures-bg-black.png",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "id": "landscape",
+    "title": "Landscape",
+    "image": "images/landscape.png",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "id": "coffee",
+    "title": "Coffee",
+    "image": "images/coffee.jpg",
+    "width": 768,
+    "height": 512
+  }
+]

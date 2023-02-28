@@ -1,0 +1,72 @@
+---
+import Header from "@components/Header.astro";
+import "@fontsource/inter/variable.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  heroImage?: string;
+  imageAlt?: string;
+}
+
+const defaultMeta = {
+  title: "Bétsie",
+  description: "",
+  image: `${import.meta.env.BASE_URL}unimi_logo.png`,
+  imageAlt: "Logo UniMI",
+};
+
+const { title = defaultMeta.title, description = defaultMeta.description, heroImage = defaultMeta.image, imageAlt = defaultMeta.imageAlt } = Astro.props as Props;
+
+const classBody =
+  "bg-cover bg-left scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-zinc-300 dark:scrollbar-thumb-zinc-600 dark:scrollbar-track-zinc-800 dark:bg-zinc-900 dark:text-white font-inter selection:bg-blue-500/70 text-xl";
+const styleBody = `background-image: url("${import.meta.env.BASE_URL}home-bg.jpg");`;
+---
+
+<!DOCTYPE html>
+<html lang="it-IT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg" />
+    <title>{title}</title>
+    <link rel="sitemap" href="./sitemap-index.xml" />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={heroImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:site_name" content="Bétsie" />
+    <meta property="og:locale" content="it_IT" />
+    <meta name="author" content="Michele Zenoni" />
+    <script is:inline>
+      const primaryColorScheme = "none";
+      const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const currentTheme = localStorage.getItem("theme");
+
+      let theme;
+      if (currentTheme) {
+        theme = currentTheme === "dark" ? "dark" : "";
+      } else {
+        if (primaryColorScheme === "dark" || (primaryColorScheme === "none" && darkModeMediaQuery)) {
+          theme = "dark";
+        } else if (primaryColorScheme === "light") {
+          theme = "";
+        } else {
+          theme = darkModeMediaQuery ? "dark" : "";
+        }
+      }
+      document.documentElement.className = theme;
+    </script>
+    <script src="@scripts/main.js"></script>
+  </head>
+  <body class={classBody} style={styleBody}>
+    <Header style="background-color: transparent;" />
+    <main class="m-auto p-2 max-w-4xl md:px-8 md:pt-2 md:pb-8" id="main">
+      <slot />
+    </main>
+  </body>
+</html>

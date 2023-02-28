@@ -1,0 +1,54 @@
+---
+import { Icon } from "astro-icon";
+
+export interface Props {
+  style?: string;
+}
+let { style } = Astro.props;
+---
+
+<footer class="p-4 bg-white sm:p-6 dark:bg-zinc-900 mx-auto max-w-4xl sticky top-[100vh] underline-offset-2" style={style}>
+  <div class="md:flex md:justify-between">
+    <div class="mb-6 mr-6 md:mb-0 flex flex-col">
+      <a href={import.meta.env.BASE_URL + "index.html"} class="flex items-center" aria-label="Logo UniMI">
+        <Icon name="unimi_logo_50" class="w-8 h-8" optimize={false} />
+        <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-white ml-3 mt-1">Bétsie</span>
+      </a>
+      <p class="text-base text-zinc-600 dark:text-zinc-300 mt-3">L'editing semplice</p>
+      <p class="text-base text-zinc-600 dark:text-zinc-300 mt-1" style="white-space:nowrap">
+        Progetto per il corso di:<br/>
+        <b>Geometria Computazionale</b><br/>
+        A.A. <b>2022/2023</b><br/>
+        Prof. Alberto <b>Alzati</b>
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-0 sm:gap-0 sm:space-x-8 text-base">
+      <div>
+        <h2 class="mb-6 text-sm text-zinc-900 uppercase dark:text-white">Risorse</h2>
+        <ul class="text-zinc-800 dark:text-zinc-300">
+          <li class="mb-2">
+            <!-- TODO: sostituire con link a progetto pubblico una volta terminato -->
+            <a href="https://github.com/Levyathanus/UNIMI/tree/main/GeometriaComputazionale/progetto/betsie" class="hover:underline" target="_blank">Codice sorgente</a>
+          </li>
+          <li class="mb-2">
+            <a href="https://github.com/lancerossdev/nofuss" class="hover:underline" target="_blank">No Fuss Astro (tema)</a>
+          </li>
+          <li>
+            <a href="https://github.com/rubenv/point-in-svg-polygon" class="hover:underline" target="_blank">point-in-svg-polygon (libreria)</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="mb-6 text-sm text-zinc-900 uppercase dark:text-white">Contatti</h2>
+        <ul class="text-zinc-800 dark:text-zinc-300">
+          <li class="mb-2" style="white-space:nowrap">
+            Michele <strong>Zenoni</strong> (matr. 989482)
+          </li>
+          <li>
+            michele.zenoni@studenti.unimi.it
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

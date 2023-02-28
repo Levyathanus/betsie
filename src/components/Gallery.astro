@@ -1,0 +1,26 @@
+---
+import images from "@content/images.json";
+
+export interface Props {
+  id: string;
+  style?: string;
+}
+let { id, style } = Astro.props;
+---
+<section id={id} style={style}>
+	<h1 class="sm:text-4xl text-3xl font-bold mb-6 dark:text-white">Galleria</h1>
+  <p class="dark:text-zinc-300 mb-6">Clicca su un'immagine qui sotto per selezionarla:</p>
+  <div class="container">
+    <ul class="images">
+      {images.map(image => {
+        return (
+          <li id={image.id} class="inline-flex p-2">
+            <div>
+              <img id={"gallery-image-" + image.id} style="max-width: 630px; max-height: 340px; cursor: pointer;" src={import.meta.env.BASE_URL + image.image} alt="Immagine non trovata!"/>
+            </div>
+          </li>
+        )
+      })}
+    </ul>
+  </div>
+</section>

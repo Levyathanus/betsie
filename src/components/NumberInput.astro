@@ -1,0 +1,25 @@
+---
+export interface Props {
+  id: string;
+  text: string;
+  min?: number;
+  max?: number;
+  placeholder?: string;
+  value?: number;
+  step?: number;
+  style?: string;
+}
+let { id, text, min, max, placeholder, value, step, style } = Astro.props;
+let parentDivId = id + "-parent-div";
+---
+<div id={parentDivId} class="mb-6" style={style}>
+  <label for={id} class="block mb-2 text-sm font-semibold text-xl text-gray-900 dark:text-white">{text}</label>
+  <input type="number" 
+  id={id}
+  min={min}
+  max={max}
+  placeholder={placeholder}
+  value={value}
+  step={step}
+  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-zinc-500 focus:border-zinc-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-200 dark:focus:border-gray-300">
+</div>

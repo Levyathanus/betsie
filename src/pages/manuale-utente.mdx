@@ -1,0 +1,118 @@
+---
+title: "Manuale utente"
+description: "Manuale utente del progetto."
+---
+
+L’utilizzo dell’editor può essere sintetizzato in cinque passi, che sono 
+mostrati graficamente nella parte alta della pagina durante l’utilizzo dell’applicazione.
+
+### 1. Upload (dell’immagine da ritagliare)
+Il primo passo consiste nello scegliere 
+l’immagine da modificare (da ritagliare), questo può essere
+fatto attraverso il caricamento di un’immagine direttamente dal PC
+dell’utente (in un qualsiasi formato: JPG, JPEG, PNG, ...) o scegliendone una tra le immagini di prova proposte cliccando
+l'apposito link.\
+E' richiesto che l'immagine scelta abbia un rapporto d'aspetto di 16:9 o 9:16.\
+Per un'esperienza ottimale si dovrebbero caricare immagini con risoluzione 1280x720px o 720x1280px, 
+in caso l'immagine avesse una risoluzione maggiore, essa
+verrà comunque portata alla risoluzione di 1280x720px o 720x1280px 
+(a seconda dell'orientamento orizzontale o verticale).
+
+### 2. Editing (Fase 1)
+Dopo aver confermato la scelta dell’immagine da
+modificare, quest’ultima viene mostrata a schermo e l’utente può
+passare alla prima fase di modifica. In questa fase si può definire 
+un’area di interesse all'interno dell’immagine caricata delimitandola
+con una spline cubica di Bézier (B-spline).\
+Per creare la B-spline l’utente deve definire i punti di controllo delle varie
+curve che la compongono: la creazione di un punto avviene cliccando
+sull’immagine e, una volta creato, questo si può spostare con un click
+prolungato sul punto stesso e il trascinamento del mouse.\
+Ogni 3 punti (4 per la prima curva) viene automaticamente disegnata a
+schermo la curva di Bézier relativa ai punti di controllo definiti;
+per personalizzarli vengono offerte le seguenti opzioni
+(ognuna delle quali viene applicata ai punti creati successivamente all'impostazione):
+* *Colore* : permette di selezionare il colore dei punti del poligono di
+	controllo;
+* *Trasparenza* : permette di regolare la trasparenza dei punti
+	rispetto all’immagine sottostante, più
+	bassa la trasparenza, più opaco sarà il colore dei punti di controllo;
+* *Dimensione* : permette di selezionare la dimensione (grafica) dei punti.
+
+Opzioni simili vengono definite anche per le curve di Bézier:
+* *Colore* : permette di selezionare il colore delle curve;
+* *Trasparenza* : permette di regolare la trasparenza delle curve 
+	rispetto all’immagine sottostante, più
+	bassa la trasparenza, più opaco sarà il colore della curva;
+* *Spessore* : permette di selezionare lo spessore della linea
+	utilizzata per il disegno delle curve.
+
+Oltre alle opzioni "estetiche" appena descritte, vengono offerte anche:
+* l’opzione di mostrare o nascondere i punti di controllo
+	(tramite la casella selezionabile _Mostra punti di
+	controllo_);
+* l’opzione di mostrare o nascondere il poligono di controllo
+	(tramite la casella selezionabile _Mostra poligono di
+	controllo_), quest’ultimo sarà rappresentato attraverso dei
+	segmenti tratteggiati dello stesso colore selezionato
+	per i punti di controllo.
+
+Sia dopo che le curve sono state create, sia con il poligono di
+controllo visibile, rimane la possibilità, per l'utente, di traslare i punti di controllo
+vedendo il cambiamento istantaneo della spline e del poligono.\
+Per cancellare l’ultimo punto di controllo creato si può utilizzare
+il bottone `Rimuovi ultimo punto`, se si elimina un punto facente parte
+del poligono di controllo di una curva, anche questa verrà eliminata.
+Se si vuole eliminare l’ultima curva disegnata si può utilizzare il bottone
+`Rimuovi ultima curva`: questa azione eliminerà gli ultimi 3 punti di
+controllo dell’ultima curva creata.\
+Con il bottone `Rimuovi immagine` tutte le modifiche saranno
+cancellate e l’utente sarà riportato al passo 1 (Upload).
+Quando si è soddisfatti del contorno creato si può chiudere la spline
+attraverso il bottone `Chiudi spline e ritaglia`, automaticamente sarà creato un segmento
+che unisce l'ultimo punto inserito al primo qualora questi due siano diversi e l’immagine sarà ritagliata
+secondo il contorno definito. Dopodichè sarà data la possibilità di salvarla come
+immagine PNG sul proprio PC e/o continuare seguendo i passi successivi.
+
+### 3. Upload (dell’immagine di sfondo)
+Analogamente al punto 1, l’utente deve
+selezionare dal proprio PC (in un qualsiasi formato: JPG, JPEG, PNG, ...), 
+o da un insieme di immagini di prova, uno sfondo su
+cui operare nella seconda fase di editing (passo 4).\
+E' richiesto che l'immagine scelta abbia un rapporto d'aspetto di 16:9 o 9:16 e che
+abbia dimensioni (larghezza e altezza in pixel),
+maggiori rispetto all'immagine ritagliata.\
+Per un'esperienza ottimale si dovrebbero caricare immagini con risoluzione 1280x720px o 720x1280px, 
+in caso l'immagine avesse una risoluzione maggiore, essa
+verrà comunque portata alla risoluzione di 1280x720px o 720x1280px 
+(a seconda dell'orientamento orizzontale o verticale).
+
+### 4. Editing (Fase 2)
+A questo punto l’utente dovrebbe ritrovarsi una schermata
+con l’immagine di sfondo selezionata al passo 3 e con l’immagine ritagliata
+al passo 2 sovrapposta. Viene quindi offerta la possibilità di applicare tre tipi di
+trasformazioni affini all’immagine in primo piano:
+* *Traslazione* : cliccando e tenendo premuto con il mouse, l’immagine può
+	essere trascinata (traslata) in un qualsiasi punto della pagina;
+* *Scala/Omotetia* : inserendo l’apposito fattore di scala (fino a due
+	cifre decimali) nell’apposito spazio si effettua un
+	ingrandimento/rimpicciolimento (si noti che il fattore si riferisce sempre
+	all’immagine iniziale e non a quella corrente);
+* *Rotazione* : è possibile eseguire una rotazione inserendo il valore
+	dell’angolo di rotazione (rispetto all’orizzontale e centrato al centro
+	dell’immagine) in gradi o in radianti come multipli di π (si noti che l’angolo di rotazione si
+	riferisce sempre alla situazione iniziale e non a quella corrente), tenendo presente
+	che un angolo di rotazione positivo corrisponde ad una rotazione in senso orario, mentre
+	un angolo di rotazione negativo corrisponde ad una rotazione in senso antiorario.
+
+Quando è soddisfatto dell’immagine (primo piano e sfondo) ottenuta, l’utente
+preme il bottone `Concludi` per passare all’ultimo passo.
+
+### 5. Fine
+All’utente è presentata l’immagine finale data dall’unione tramite
+sovrapposizione dell’immagine in primo piano e da quella di sfondo; se
+l’immagine in primo piano non rientrava completamente in quella di sfondo ci
+sarà un ritaglio per garantire che il risultato finale includa solo la parte dell'immagine
+ritagliata che risulti sovrapposta con lo sfondo.\
+Si può, ora, salvare il risultato come immagine PNG attraverso il tasto `Salva` 
+e/o procedere a riportare l’editor al passo 1 attraverso il tasto `Modifica un’altra immagine!`.

@@ -1,0 +1,41 @@
+---
+export interface Props {
+  id: string;
+  style?: string;
+}
+let { id, style } = Astro.props;
+
+let boldId = [id + "-bold-0", id + "-bold-1", id + "-bold-2", id + "-bold-3", id + "-bold-4"];
+let iconId = [id + "-icon-0", id + "-icon-1", id + "-icon-2", id + "-icon-3", id + "-icon-4"];
+let numId = [id + "-num-0", id + "-num-1", id + "-num-2", id + "-num-3", id + "-num-4"];
+---
+<ol id={id} class="flex items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base mb-6" style={style}>
+  <li id={boldId[0]} style="font-weight: bold;" class="flex md:w-full items-center text-zinc-600 dark:text-zinc-500 sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+    <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:font-light after:text-gray-200 dark:after:text-gray-500">
+      <span id={numId[0]} class="mr-2" style="display: ;">1.</span><svg id={iconId[0]} style="display: none;" aria-hidden="true" class="w-4 h-4 mr-2 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+      Upload <span class="hidden sm:inline-flex sm:ml-2">Iniziale</span>
+    </span>
+  </li>
+  <li id={boldId[1]} style="" class="flex md:w-full items-center text-zinc-600 dark:text-zinc-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+    <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:font-light after:text-gray-200 dark:after:text-gray-500">
+      <span id={numId[1]} class="mr-2" style="display: ;">2.</span><svg id={iconId[1]} style="display: none;" aria-hidden="true" class="w-4 h-4 mr-2 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+      Editing <span class="hidden sm:inline-flex sm:ml-2">Fase <span class="hidden sm:inline-flex sm:ml-2">1</span></span>
+    </span>
+  </li>
+  <li id={boldId[2]} style="" class="flex md:w-full items-center text-zinc-600 dark:text-zinc-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+    <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:font-light after:text-gray-200 dark:after:text-gray-500">
+      <span id={numId[2]} class="mr-2" style="display: ;">3.</span><svg id={iconId[2]} style="display: none;" aria-hidden="true" class="w-4 h-4 mr-2 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+      Upload <span class="hidden sm:inline-flex sm:ml-2">Sfondo</span>
+    </span>
+  </li>
+  <li id={boldId[3]} style="" class="flex md:w-full items-center text-zinc-600 dark:text-zinc-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+    <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:font-light after:text-gray-200 dark:after:text-gray-500">
+      <span id={numId[3]} class="mr-2" style="display: ;">4.</span><svg id={iconId[3]} style="display: none;" aria-hidden="true" class="w-4 h-4 mr-2 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+      Editing <span class="hidden sm:inline-flex sm:ml-2">Fase <span class="hidden sm:inline-flex sm:ml-2">2</span></span>
+    </span>
+  </li>
+  <li id={boldId[4]} style="" class="flex items-center text-zinc-600 dark:text-zinc-500">
+    <span id={numId[4]} class="mr-2" style="display: ;">5.</span><svg id={iconId[4]} style="display: none;" aria-hidden="true" class="w-4 h-4 mr-2 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+    Fine
+  </li>
+</ol>

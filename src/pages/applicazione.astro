@@ -1,0 +1,123 @@
+---
+import Button from "@components/Button.astro";
+import ContinueButton from "@components/ContinueButton.astro";
+import SaveButton from "@components/SaveButton.astro";
+import Modal from "@components/Modal.astro";
+import Alert from "@components/Alert.astro";
+import Spinner from "@components/Spinner.astro";
+import NumberInput from "@components/NumberInput.astro";
+import Radio from "@components/Radio.astro";
+import StaticLayout from "@layouts/StaticLayout.astro";
+import Stepper from "@components/Stepper.astro";
+import Gallery from "@components/Gallery.astro";
+
+const metadata = {
+  title: "Applicazione",
+  description: "Semplice applicativo per l'editing di immagini.",
+};
+---
+
+<StaticLayout {...metadata}>
+  <Gallery id="gallery" style="display: none;"/>
+  <section id="top-section">
+    <h1 class="sm:text-4xl text-3xl font-bold mb-6 dark:text-white">
+      Applicazione
+    </h1>
+    <Stepper id="app-stepper"/>
+    <p id="top-note" class="dark:text-zinc-300 mb-6">
+      <b>Seleziona/trascina</b> l'immagine da ritagliare nella sezione qui sotto:
+    </p>
+  </section>
+  <section id="app-section">
+    <div id="canvas-parent-div" style="position: relative;">
+      <Spinner id="cut-spinner" dimension={10} text="Caricamento..." style="position: absolute; top: 50%; left: 50%; display: none;" placement="center"/>
+      <canvas id="canvas" class="aspect-video border border-solid border-zinc-400"></canvas>
+    </div>
+    <div class="flex items-center justify-center w-full" id="dropzone-parent-div">
+      <label id="dropzone-parent-label" for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+            <p id="dropzone-text" class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Clicca o trascina qui</span> per caricare <br/> l'immagine (MAX: 1280x720px)</p>
+          </div>
+          <input id="dropzone-file" type="file" class="hidden" accept="image/*" />
+      </label>
+    </div> 
+    <br/>
+    <p id="bottom-note">
+      <b>Nota:</b> le dimensioni massime per l'immagine sono: 1280x720px. Se l'immagine caricata ha dimensioni superiori verrà riscalata a 1280x720px (formato 16:9).
+    </p>
+    <div id="select-image" class="relative mt-8" style="left: 33%;">
+      <p>
+        <b>Oppure</b> scegli un'immagine di prova <a id="gallery-link" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style="cursor: pointer;">qui</a>
+      </p>
+    </div>
+    <Alert id="aspect-ratio-alert" btnRetryTxt="Riprova" btnReloadTxt="Annulla tutto" title="Errore" style="display: none;" text="L'immagine scelta non ha formato 16:9 o 9:16. Premere 'Riprova' per caricare una nuova immagine, 'Annulla tutto' per tornare all'inizio."/>
+    <div id="cp-selectors-title" style="display: none;">
+      <b>&gt; Proprietà punti di controllo: </b>
+    </div>
+    <div id="cp-selectors" style="display: none;" class="flex items-center justify-evenly w-full mb-6">
+      <div class="p-2">
+        <input id="cp-enabled" type="checkbox" checked/><label for="cp-enabled" class="p-2">Mostra punti di controllo</label>
+      </div>
+      <div class="p-2">
+        <input id="cp-poly-enabled" type="checkbox"/><label for="cp-poly-enabled" class="p-2">Mostra poligono di controllo</label>
+      </div>
+      <div class="p-2">
+        <span class="pr-2"><b>Colore</b></span><input id="cp-color" type="color" value="#0000FF"/>
+      </div>
+      <div class="p-2">
+        <span class="pr-2"><b>Trasparenza</b></span><input id="cp-transparency" type="range" min="0" max="99" value="33"/>
+      </div>
+      <div class="p-2">
+        <span class="pr-2"><b>Dimensione</b></span><input id="cp-size" type="range" min="2" max="15" value="7"/>
+      </div>
+      <div>
+        <Button id="delete-last-cp-btn" type="button" text="Rimuovi ultimo punto"/>
+      </div>
+    </div>
+    <div id="bc-selectors-title" style="display: none;">
+      <b>&gt; Proprietà curve di Bézier: </b>
+    </div>
+    <div id="bc-selectors" style="display: none;" class="flex items-center justify-evenly w-full mb-6">
+      <div class="p-2">
+        <span class="pr-2"><b>Colore</b></span><input id="bc-color" type="color" value="#000000"/>
+      </div>
+      <div class="p-2">
+        <span class="pr-2"><b>Trasparenza</b></span><input id="bc-transparency" type="range" min="0" max="99" value="0"/>
+      </div>
+      <div class="p-2">
+        <span class="pr-2"><b>Spessore</b></span><input id="bc-size" type="range" min="1" max="7" value="2"/>
+      </div>
+      <div>
+        <Button id="delete-last-bc-btn" type="button" text="Rimuovi ultima curva"/>
+      </div>
+    </div>
+    <Modal id="close-cut-modal" text={`Ritagliare l'area all'interno del contorno potrebbe richiedere fino a 30s. Continuare?`} btnOkTxt="OK" btnCloseTxt="Indietro" placement="bottom-center"/>
+    <Button id="close-cut-btn" type="button" text="Chiudi spline e ritaglia" style="display: none;" dataModalId="close-cut-modal"/>
+    <Modal id="reset-modal" text="Rimuovere l'immagine caricata?" btnOkTxt="OK" btnCloseTxt="Indietro"/>
+    <Button id="reset-btn" type="button" text="Rimuovi immagine" style="display: none;" dataModalId="reset-modal"/>
+    <Button id="edit-btn" type="button" text="Inizia l'editing!" style="display: none;"/>
+    <SaveButton id="cut-image-save-btn" type="button" text="Salva" style="display: none;"/>
+    <ContinueButton id="cut-image-continue-btn" type="button" text="Continua" style="display: none; float: right;"/>
+    <Alert id="bg-image-alert" btnRetryTxt="Riprova" btnReloadTxt="Annulla tutto" title="Errore" style="display: none;" text="L'immagine scelta come sfondo ha dimensioni inferiori rispetto alla sezione ritagliata. Premere 'Riprova' per caricare una nuova immagine, 'Annulla tutto' per tornare all'inizio."/>
+    <div id="roatation-scale-div" class="grid grid-cols-2 justify-items-start" style="display: none;">
+      <div class="grid grid-cols-2 place-items-center max-w-lg">
+        <NumberInput id="rotation-input" text="Rotazione" step={1} placeholder="Gradi/radianti (x π)" value={0}/>
+        <div class="pt-6">
+          <Radio id="deg-radio" text="Gradi (°)" name="deg-rad" checked/>
+          <Radio id="rad-radio" text="Radianti (x π)" name="deg-rad"/>
+        </div>
+      </div>
+      <NumberInput id="scale-input" text="Scala/Omotetia" step={0.01} placeholder="Fattore di scala" value={1.00}/>
+    </div>
+    <Button id="final-end-btn" type="button" text="Concludi" style="display: none;"/>
+    <Modal id="cancel-modal" text="Annullare tutte le trasformazioni?" btnOkTxt="OK" btnCloseTxt="Indietro"/>
+    <Button id="cancel-btn" type="button" text="Annulla trasformazioni" style="display: none;" dataModalId="cancel-modal"/>
+    <SaveButton id="final-save-btn" type="button" text="Salva" style="display: none;"/>
+    <Button id="final-back-btn" type="button" text="Indietro" style="display: none;"/>
+    <Modal id="final-reset-modal" text="L'immagine ottenuta sarà cancellata. Continuare?" btnOkTxt="Sì" btnCloseTxt="No"/>
+    <Button id="final-reset-btn" type="button" text="Modifica un'altra immagine!" style="float: right; display: none;" dataModalId="final-reset-modal"/>
+  </section>
+  <script src="../../node_modules/flowbite/dist/flowbite.js"></script>
+	<script src="@scripts/app.js"></script>
+</StaticLayout>

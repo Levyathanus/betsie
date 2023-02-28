@@ -1,0 +1,18 @@
+---
+export interface Props {
+  id: string;
+  text: string;
+  style?: string;
+  type: "button" | "reset" | "submit" | null | undefined;
+  dataModalId?: string;
+}
+let { id, text, style, type, dataModalId } = Astro.props;
+---
+<button id={id} 
+  type={type}
+  class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 mr-4 px-4 border border-gray-400 rounded shadow dark:text-white dark:bg-zinc-700 dark:hover:bg-zinc-800 disabled:bg-gray-300 disabled:hover:bg-gray-300"
+  data-modal-target={dataModalId}
+  data-modal-show={dataModalId}
+  style={style}>
+    {text}
+</button>

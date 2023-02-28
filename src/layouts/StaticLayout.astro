@@ -1,0 +1,67 @@
+---
+import Header from "@components/Header.astro";
+import ThemeToggle from "@components/ThemeToggle.astro";
+import "@fontsource/inter/variable.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const defaultMeta = {
+  title: "Bétsie, l'editing semplice",
+  description: "Un semplice editor grafico.",
+};
+
+const { title = defaultMeta.title, description = defaultMeta.description } = Astro.props as Props;
+
+const classBody =
+  "pb-8 scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-zinc-300 dark:scrollbar-thumb-zinc-600 dark:scrollbar-track-zinc-800 dark:bg-zinc-900 dark:text-white font-inter selection:bg-blue-500/70 text-xl";
+---
+
+<!DOCTYPE html>
+<html lang="it-IT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg" />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Bétsie" />
+    <meta property="og:locale" content="it_IT" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content="Michele Zenoni" />
+    <script is:inline>
+      const primaryColorScheme = "none";
+      const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const currentTheme = localStorage.getItem("theme");
+
+      let theme;
+      if (currentTheme) {
+        theme = currentTheme === "dark" ? "dark" : "";
+      } else {
+        if (primaryColorScheme === "dark" || (primaryColorScheme === "none" && darkModeMediaQuery)) {
+          theme = "dark";
+        } else if (primaryColorScheme === "light") {
+          theme = "";
+        } else {
+          theme = darkModeMediaQuery ? "dark" : "";
+        }
+      }
+      document.documentElement.className = theme;
+    </script>
+    <script src="@scripts/main.js"></script>
+  </head>
+  <body class={classBody}>
+    <Header />
+    <main class="m-auto max-w-7xl" id="main">
+      <slot />
+    </main>
+    <ThemeToggle />
+  </body>
+</html>
