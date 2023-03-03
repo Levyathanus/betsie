@@ -1,4 +1,5 @@
 // IMPORTS
+const pointInSvgPolygon = window.pointInSvgPolygon;
 const html2canvas = window.html2canvas;
 /*
 The following license (BSD-3-Clause) applies to the point-in-svg-polygon module, to the current file (app.js) and to worker.js:
@@ -1147,7 +1148,7 @@ function createWorker(fn) {
 }
 
 function workerJob() {
-  const pointInSvgPolygon = window.pointInSvgPolygon;
+  const pointInSvgPolygon = message.data.pointInSvgPolygon;
   const rawData = new Array();
 	let tpPoints = new Array();
 	const minYTopCp = message.data.minYTopCp;
@@ -1221,6 +1222,7 @@ const cutImage = () => {
 					"maxXRightCp": maxXRightCp,
 					"minYTopCp": minYTopCp,
 					"maxYBottomCp": maxYBottomCp,
+          "pointInSvgPolygon": pointInSvgPolygon,
 				});
 
 				removeClosingLine();
