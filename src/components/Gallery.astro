@@ -16,7 +16,7 @@ let { id, style } = Astro.props;
         return (
           <li id={image.id} class="inline-flex p-2">
             <div>
-              <img id={"gallery-image-" + image.id} style="max-width: 630px; max-height: 340px; cursor: pointer;" src={import.meta.env.BASE_URL + image.image} alt="Immagine non trovata!"/>
+              <img id={"gallery-image-" + image.id} style="max-width: 630px; max-height: 340px; cursor: pointer;" src={image.data} alt="Immagine non trovata!"/>
             </div>
           </li>
         )

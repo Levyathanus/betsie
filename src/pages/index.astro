@@ -15,6 +15,6 @@ import Features from "@components/Features.astro";
     <br/>
     <p class="text-left">Esplora le sezioni cliccando qui sotto o tramite il menù in cima alla pagina:</p>
   </section>
-  {homepage.map((homepage) => <Features title={homepage.title} icon={homepage.icon} content={homepage.content} href={import.meta.env.BASE_URL + homepage.href} />)}
+  {homepage.map((homepage) => <Features title={homepage.title} icon={homepage.icon} content={homepage.content} href={homepage.href} />)}
   <Footer style="background-color: transparent;" />
 </HomeLayout>

@@ -1,6 +1,5 @@
 ---
 import Header from "@components/Header.astro";
-import ThemeToggle from "@components/ThemeToggle.astro";
 import "@fontsource/inter/variable.css";
 import "@fontsource/fira-code/variable.css";
 
@@ -31,26 +30,6 @@ const classBody =
     <meta property="og:locale" content="it_IT" />
     <meta name="author" content="Michele Zenoni" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous" />
-    <script is:inline>
-      const primaryColorScheme = "none";
-      const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const currentTheme = localStorage.getItem("theme");
-
-      let theme;
-      if (currentTheme) {
-        theme = currentTheme === "dark" ? "dark" : "";
-      } else {
-        if (primaryColorScheme === "dark" || (primaryColorScheme === "none" && darkModeMediaQuery)) {
-          theme = "dark";
-        } else if (primaryColorScheme === "light") {
-          theme = "";
-        } else {
-          theme = darkModeMediaQuery ? "dark" : "";
-        }
-      }
-      document.documentElement.className = theme;
-    </script>
-    <script src="@scripts/main.js"></script>
   </head>
   <body class={classBody}>
     <Header />
@@ -64,6 +43,5 @@ const classBody =
         </article>
       </section>
     </main>
-    <ThemeToggle />
   </body>
 </html>

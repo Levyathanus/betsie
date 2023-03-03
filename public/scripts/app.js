@@ -1334,7 +1334,6 @@ function createWorker(fn) {
   return new Worker(url);
 }
 
-// This function uses: point-in-svg-module
 function workerJob(message) {
   var bezier3Type = "bezier3";
   var lineType = "line";

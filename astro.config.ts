@@ -12,13 +12,13 @@ import remarkGfm from 'remark-gfm';
 // https://astro.build/config
 export default defineConfig({
   site: "http://www.mat.unimi.it",
-  base: "/",
+  base: "/users/alzati/Geometria_Computazionale_98-99/apps/betsie",
   output: "static",
-  vite: {
+  /*vite: {
     ssr: {
       external: ["svgo"],
     },
-  },
+  },*/
   build: {
     format: "file",
   },

@@ -1,6 +1,5 @@
 ---
 import Header from "@components/Header.astro";
-import ThemeToggle from "@components/ThemeToggle.astro";
 import "@fontsource/inter/variable.css";
 
 export interface Props {
@@ -36,32 +35,12 @@ const classBody =
     <meta property="og:locale" content="it_IT" />
     <meta name="generator" content={Astro.generator} />
     <meta name="author" content="Michele Zenoni" />
-    <script is:inline>
-      const primaryColorScheme = "none";
-      const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const currentTheme = localStorage.getItem("theme");
-
-      let theme;
-      if (currentTheme) {
-        theme = currentTheme === "dark" ? "dark" : "";
-      } else {
-        if (primaryColorScheme === "dark" || (primaryColorScheme === "none" && darkModeMediaQuery)) {
-          theme = "dark";
-        } else if (primaryColorScheme === "light") {
-          theme = "";
-        } else {
-          theme = darkModeMediaQuery ? "dark" : "";
-        }
-      }
-      document.documentElement.className = theme;
-    </script>
-    <script src="@scripts/main.js"></script>
+    <link href="css/flowbite.min.css" rel="stylesheet" />
   </head>
   <body class={classBody}>
     <Header />
     <main class="m-auto max-w-7xl" id="main">
       <slot />
     </main>
-    <ThemeToggle />
   </body>
 </html>
