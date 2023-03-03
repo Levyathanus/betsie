@@ -45,6 +45,7 @@ const STEPPER_STEPS_N = 5;
 const CANVAS_DEFAULT_CLASS = "aspect-video border border-solid border-zinc-400";
 const SVGNS = 'http://www.w3.org/2000/svg';
 const XLINKSNS = 'http://www.w3.org/1999/xlink';
+const WORKER_CDN_URL = "https://cdn.jsdelivr.net/gh/Levyathanus/betsie@cb09aea70c5e8c320596639e5168a0039deb6301/src/scripts/worker.js";
 
 var svgCanvas = null;
 var gControlPoints = [];
@@ -1137,6 +1138,12 @@ function removeClosingLine() {
     }, 0));
 }; */
 
+// ref. https://stackoverflow.com/questions/21913673/execute-web-worker-from-different-origin
+function getWorkerURL( url ) {
+  const content = `importScripts( "${ url }" );`;
+  return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
+} 
+
 const cutImage = () => {
   return new Promise(resolve => {
       const bcIdRegexp = new RegExp("bc-\\d+-\\d+-\\d+-\\d+");
@@ -1156,8 +1163,9 @@ const cutImage = () => {
         gControlPoints[i].remove(true);
       }
 
+      const workerUrl = getWorkerURL(WORKER_CDN_URL);
 			if (window.Worker) {
-				const worker = new Worker(new URL("./worker.js", import.meta.url), { type: 'module' });
+				const worker = new Worker(workerUrl);
 				worker.postMessage({
 					"path": path,
 					"minXLeftCp": minXLeftCp,
@@ -1173,6 +1181,7 @@ const cutImage = () => {
 					const width = message.data.width;
 					const height = message.data.height;
 					worker.terminate();
+          URL.revokeObjectURL(workerUrl);
 					for (const pixel of rawData) {
 						if (pixel.inside) {
 							rawImageData.push([...context.getImageData(pixel.x, pixel.y, 1, 1).data]);
