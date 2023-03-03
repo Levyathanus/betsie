@@ -23,7 +23,7 @@ You can use `npm i` or `yarn` to install dependencies. I personally use `npm` be
 The [No Fuss Astro Template](https://github.com/lancerossdev/nofuss) by Lance Ross is used under the [MIT License](https://github.com/lancerossdev/nofuss/blob/main/LICENSE).
 
 The [point-in-svg](https://github.com/rubenv/point-in-svg-polygon) module by Ruben Vermeersch is used under the [BSD-3-Clause License](https://github.com/rubenv/point-in-svg-polygon/blob/master/LICENSE),
-with the following disclaimer that applies also to the `src/scripts/app.js` file:
+with the following disclaimer that applies also to the `src/scripts/app.js` and the `src/scripts/worker.js` files:
     
     Copyright (c) 2023, Michele Zenoni
     Copyright (c) 2016, Ruben Vermeersch
