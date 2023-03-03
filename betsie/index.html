@@ -12,36 +12,16 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bétsie">
     <meta property="og:description" content="">
-    <meta property="og:image" content="/unimi_logo.png">
+    <meta property="og:image" content="unimi_logo.png">
     <meta property="og:image:alt" content="Logo UniMI">
     <meta property="og:site_name" content="Bétsie">
     <meta property="og:locale" content="it_IT">
     <meta name="author" content="Michele Zenoni">
-    <script>
-      const primaryColorScheme = "none";
-      const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const currentTheme = localStorage.getItem("theme");
-
-      let theme;
-      if (currentTheme) {
-        theme = currentTheme === "dark" ? "dark" : "";
-      } else {
-        if (primaryColorScheme === "dark" || (primaryColorScheme === "none" && darkModeMediaQuery)) {
-          theme = "dark";
-        } else if (primaryColorScheme === "light") {
-          theme = "";
-        } else {
-          theme = darkModeMediaQuery ? "dark" : "";
-        }
-      }
-      document.documentElement.className = theme;
-    </script>
-    
-  <link rel="stylesheet" href="/assets/404.e19361f2.css" />
-<link rel="stylesheet" href="/assets/manuale-utente.a8a9ebab.css" /><script type="module" src="/hoisted.d8bd15663.js"></script></head>
-  <body class="bg-cover bg-left scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-zinc-300 dark:scrollbar-thumb-zinc-600 dark:scrollbar-track-zinc-800 dark:bg-zinc-900 dark:text-white font-inter selection:bg-blue-500/70 text-xl" style="background-image: url(&#34;/home-bg.jpg&#34;);">
+  <link rel="stylesheet" href="/users/alzati/Geometria_Computazionale_98-99/apps/betsie/assets/404.aa0858fc.css" />
+<link rel="stylesheet" href="/users/alzati/Geometria_Computazionale_98-99/apps/betsie/assets/manuale-utente.4b4a350d.css" /></head>
+  <body class="bg-cover bg-left scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-zinc-300 dark:scrollbar-thumb-zinc-600 dark:scrollbar-track-zinc-800 dark:bg-zinc-900 dark:text-white font-inter selection:bg-blue-500/70 text-xl" style="background-image: url(&#34;home-bg.jpg&#34;);">
     <header class="bg-white dark:bg-zinc-900 text-lg dark:text-zinc-300 mx-auto max-w-6xl flex flex-row justify-center" style="background-color: transparent;">
-  <a href="/index.html" class="mx-8 mt-5 flex items-center" aria-label="Logo UniMI">
+  <a href="index.html" class="mx-8 mt-5 flex items-center" aria-label="Logo UniMI">
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200.000000 1200.000000" preserveAspectRatio="xMidYMid meet" class="w-20 h-20" astro-icon="unimi_logo_50"><g transform="translate(0.000000,1200.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="currentColor" stroke-width="50">
 <path d="M5720 11993 c-864 -46 -1619 -240 -2365 -608 -638 -314 -1153 -689
@@ -773,13 +753,13 @@ c45 -19 44 -26 -5 -26 -29 0 -42 5 -50 20 -13 25 5 27 55 6z"/>
 </g></svg>
   </a>
   <nav class="pt-6 flex flex-row space-x-8">
-        <a href="/index.html" class="self-center dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 hidden sm:block">
+        <a href="index.html" class="self-center dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 hidden sm:block">
             Home
-          </a><a href="/teoria.html" class="self-center dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 hidden sm:block">
+          </a><a href="teoria.html" class="self-center dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 hidden sm:block">
             Teoria
-          </a><a href="/manuale-utente.html" class="self-center dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 hidden sm:block">
+          </a><a href="manuale-utente.html" class="self-center dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 hidden sm:block">
             Manuale utente
-          </a><a href="/applicazione.html" class="self-center dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 hidden sm:block">
+          </a><a href="applicazione.html" class="self-center dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 hidden sm:block">
             Applicazione
           </a>
       </nav>
@@ -788,13 +768,13 @@ c45 -19 44 -26 -5 -26 -29 0 -42 5 -50 20 -13 25 5 27 55 6z"/>
 </header>
 <header class="nav-menu hidden bg-white dark:bg-zinc-900">
   <nav class="m-8 flex flex-col inline-flex space-y-3">
-        <a href="/index.html" class="dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 sm:hidden">
+        <a href="index.html" class="dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 sm:hidden">
             Home
-          </a><a href="/teoria.html" class="dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 sm:hidden">
+          </a><a href="teoria.html" class="dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 sm:hidden">
             Teoria
-          </a><a href="/manuale-utente.html" class="dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 sm:hidden">
+          </a><a href="manuale-utente.html" class="dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 sm:hidden">
             Manuale utente
-          </a><a href="/applicazione.html" class="dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 sm:hidden">
+          </a><a href="applicazione.html" class="dark:text-zinc-300 text-black hover:text-zinc-500 dark:hover:text-zinc-400 sm:hidden">
             Applicazione
           </a>
       </nav>
@@ -811,7 +791,7 @@ c45 -19 44 -26 -5 -26 -29 0 -42 5 -50 20 -13 25 5 27 55 6z"/>
   </section><section class="py-1 sm:flex sm:items-center sm:justify-evenly text-center sm:text-left">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="overflow-hidden inline-flex sm:m-8 w-28 h-28" astro-icon="book"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.75 11.75v2m1.5.5h-9c-.75 0-1.5-.5-1.5-1.5s.75-1.5 1.5-1.5h9v-9.5h-9c-.75 0-1.5.75-1.5 1.5v9.5"/></svg>
   <header class="mt-8 max-w-lg sm:my-0 mx-auto sm:mx-0">
-    <a href="/teoria.html" class="hover:underline">
+    <a href="teoria.html" class="hover:underline">
       <h2 class="sm:text-4xl text-3xl font-semibold mb-4 dark:text-white">Teoria</h2>
     </a>
     <p class="max-w-10 font-normal leading-7 dark:text-zinc-300 sm:max-w-sm md:max-w-xl">Una panoramica sui concetti di geometria utilizzati per lo sviluppo del progetto: spline cubiche di Bézier e trasformazioni affini.</p>
@@ -819,7 +799,7 @@ c45 -19 44 -26 -5 -26 -29 0 -42 5 -50 20 -13 25 5 27 55 6z"/>
 </section><section class="py-1 sm:flex sm:items-center sm:justify-evenly text-center sm:text-left">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="overflow-hidden inline-flex sm:m-8 w-28 h-28" astro-icon="notes"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.75 1.75h10.5v12.5H2.75zm3 6h4.5m-4.5 3h2.5m-2.5-6h4.5"/></svg>
   <header class="mt-8 max-w-lg sm:my-0 mx-auto sm:mx-0">
-    <a href="/manuale-utente.html" class="hover:underline">
+    <a href="manuale-utente.html" class="hover:underline">
       <h2 class="sm:text-4xl text-3xl font-semibold mb-4 dark:text-white">Manuale utente</h2>
     </a>
     <p class="max-w-10 font-normal leading-7 dark:text-zinc-300 sm:max-w-sm md:max-w-xl">Una serie di istruzioni per guidare l&#39;utente nell&#39;utilizzo dell&#39;applicazione in modo ottimale.</p>
@@ -827,7 +807,7 @@ c45 -19 44 -26 -5 -26 -29 0 -42 5 -50 20 -13 25 5 27 55 6z"/>
 </section><section class="py-1 sm:flex sm:items-center sm:justify-evenly text-center sm:text-left">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="overflow-hidden inline-flex sm:m-8 w-28 h-28" astro-icon="application-edit-outline"><path fill="currentColor" d="M11 20v2H3c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h18c1.1 0 2 .9 2 2v8.1l-.2-.2c-.5-.5-1.1-.8-1.8-.8V6H3v14h8m10.4-6.7l1.3 1.3c.2.2.2.6 0 .8l-1 1l-2.1-2.1l1-1c.1-.1.2-.2.4-.2s.3.1.4.2m-.3 3.6l-6 6.1H13v-2.1l6.1-6.1l2 2.1Z"/></svg>
   <header class="mt-8 max-w-lg sm:my-0 mx-auto sm:mx-0">
-    <a href="/applicazione.html" class="hover:underline">
+    <a href="applicazione.html" class="hover:underline">
       <h2 class="sm:text-4xl text-3xl font-semibold mb-4 dark:text-white">Applicazione</h2>
     </a>
     <p class="max-w-10 font-normal leading-7 dark:text-zinc-300 sm:max-w-sm md:max-w-xl">L&#39;editor vero e proprio, pronto all&#39;uso direttamente nel browser!</p>
@@ -835,7 +815,7 @@ c45 -19 44 -26 -5 -26 -29 0 -42 5 -50 20 -13 25 5 27 55 6z"/>
 </section><footer class="p-4 bg-white sm:p-6 dark:bg-zinc-900 mx-auto max-w-4xl sticky top-[100vh] underline-offset-2" style="background-color: transparent;">
   <div class="md:flex md:justify-between">
     <div class="mb-6 mr-6 md:mb-0 flex flex-col">
-      <a href="/index.html" class="flex items-center" aria-label="Logo UniMI">
+      <a href="index.html" class="flex items-center" aria-label="Logo UniMI">
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200.000000 1200.000000" preserveAspectRatio="xMidYMid meet" class="w-8 h-8" astro-icon="unimi_logo_50"><g transform="translate(0.000000,1200.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="currentColor" stroke-width="50">
 <path d="M5720 11993 c-864 -46 -1619 -240 -2365 -608 -638 -314 -1153 -689
