@@ -11,14 +11,9 @@ import remarkGfm from 'remark-gfm';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "http://www.mat.unimi.it",
-  base: "/",
+  site: "https://betsie.github.io",
+  base: "/betsie",
   output: "static",
-  vite: {
-    ssr: {
-      external: ["svgo"],
-    },
-  },
   build: {
     format: "file",
   },
