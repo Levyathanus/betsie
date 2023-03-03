@@ -1147,7 +1147,7 @@ function createWorker(fn) {
   return new Worker(url);
 }
 
-function workerJob() {
+function workerJob(message) {
   const pointInSvgPolygon = message.data.pointInSvgPolygon;
   const rawData = new Array();
 	let tpPoints = new Array();
