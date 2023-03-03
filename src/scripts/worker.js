@@ -1,4 +1,4 @@
-import pointInSvgPolygon from "point-in-svg-polygon";
+const pointInSvgPolygon = window.pointInSvgPolygon;
 /*
 The following license (BSD-3-Clause) applies to the point-in-svg-polygon module, to the current file (worker.js) and to app.js:
 Copyright (c) 2023, Michele Zenoni

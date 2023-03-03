@@ -1,5 +1,5 @@
 // IMPORTS
-import html2canvas from "html2canvas";
+const html2canvas = window.html2canvas;
 /*
 The following license (BSD-3-Clause) applies to the point-in-svg-polygon module, to the current file (app.js) and to worker.js:
 Copyright (c) 2023, Michele Zenoni
