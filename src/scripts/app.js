@@ -1138,10 +1138,60 @@ function removeClosingLine() {
     }, 0));
 }; */
 
-// ref. https://stackoverflow.com/questions/21913673/execute-web-worker-from-different-origin
-function getWorkerURL( url ) {
-  const content = `importScripts( "${ url }" );`;
-  return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
+// ref. https://medium.com/@dee_bloo/make-multithreading-easier-with-inline-web-workers-a58723428a42
+function createWorker(fn) {
+  var blob = new Blob(['self.onmessage = ', fn.toString()], { type: 'text/javascript' });
+  var url = URL.createObjectURL(blob);
+  
+  return new Worker(url);
+}
+
+function workerJob() {
+  const pointInSvgPolygon = window.pointInSvgPolygon;
+  const rawData = new Array();
+	let tpPoints = new Array();
+	const minYTopCp = message.data.minYTopCp;
+	const maxYBottomCp = message.data.maxYBottomCp;
+	const minXLeftCp = message.data.minXLeftCp;
+	const maxXRightCp = message.data.maxXRightCp;
+	const segments = pointInSvgPolygon.segments(message.data.path);
+  for (let y = minYTopCp; y < maxYBottomCp; y++) {
+		for (let x = minXLeftCp; x < maxXRightCp; x++) {
+			if (!pointInSvgPolygon.isInside([x, y], segments)) {
+				if (pointInSvgPolygon.isInside([x - 1, y], segments)) {
+					tpPoints.push({ "x": x, "y": y});
+				}
+				if (pointInSvgPolygon.isInside([x + 1, y], segments)) {
+					tpPoints.push({ "x": x, "y": y});
+				}
+				if (pointInSvgPolygon.isInside([x, y - 1], segments)) {
+					tpPoints.push({ "x": x, "y": y});
+				}
+				if (pointInSvgPolygon.isInside([x, y + 1], segments)) {
+					tpPoints.push({ "x": x, "y": y});
+				}
+			}
+		}
+	}
+
+	let minXLeftTp = Math.min(...(tpPoints.flatMap(tp => { return tp.x; })));
+  let maxXRightTp = Math.max(...(tpPoints.flatMap(tp => { return tp.x; })));
+  let minYTopTp = Math.min(...(tpPoints.flatMap(tp => { return tp.y; })));
+  let maxYBottomTp = Math.max(...(tpPoints.flatMap(tp => { return tp.y; })));
+
+  for (let y = minYTopTp; y < maxYBottomTp; y++) {
+    for (let x = minXLeftTp; x < maxXRightTp; x++) {
+      if (pointInSvgPolygon.isInside([x, y], segments)) { // selected area
+        rawData.push({"x": x, "y": y, "inside": true });
+      } else { // transparent points to make ImageData a rect
+        rawData.push({"x": x, "y": y, "inside": false });
+      }
+    }
+  }
+	
+	const width = maxXRightTp - minXLeftTp;
+  const height = maxYBottomTp - minYTopTp;
+	self.postMessage({ "rawData": rawData, "width": width, "height": height });
 }
 
 const cutImage = () => {
@@ -1163,10 +1213,8 @@ const cutImage = () => {
         gControlPoints[i].remove(true);
       }
 
-      const workerUrl = getWorkerURL(WORKER_CDN_URL);
 			if (window.Worker) {
-        console.log(workerUrl);
-				const worker = new Worker(workerUrl);
+				const worker = createWorker(workerJob);
 				worker.postMessage({
 					"path": path,
 					"minXLeftCp": minXLeftCp,
@@ -1182,7 +1230,6 @@ const cutImage = () => {
 					const width = message.data.width;
 					const height = message.data.height;
 					worker.terminate();
-          URL.revokeObjectURL(workerUrl);
 					for (const pixel of rawData) {
 						if (pixel.inside) {
 							rawImageData.push([...context.getImageData(pixel.x, pixel.y, 1, 1).data]);
