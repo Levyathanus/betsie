@@ -1,5 +1,6 @@
 // IMPORTS
 const html2canvas = window.html2canvas;
+const worker = window.worker;
 /*
 The following license (BSD-3-Clause) applies to the point-in-svg-polygon module, to the current file (app.js) and to worker.js:
 Copyright (c) 2023, Michele Zenoni
@@ -1138,11 +1139,11 @@ function removeClosingLine() {
     }, 0));
 }; */
 
-// ref. https://stackoverflow.com/questions/21913673/execute-web-worker-from-different-origin
+/* ref. https://stackoverflow.com/questions/21913673/execute-web-worker-from-different-origin
 function getWorkerURL( url ) {
   const content = `importScripts( "${ url }" );`;
   return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
-} 
+} */
 
 const cutImage = () => {
   return new Promise(resolve => {
@@ -1163,9 +1164,10 @@ const cutImage = () => {
         gControlPoints[i].remove(true);
       }
 
-      const workerUrl = getWorkerURL(WORKER_CDN_URL);
+      //const workerUrl = getWorkerURL(WORKER_CDN_URL);
 			if (window.Worker) {
-				const worker = new Worker(workerUrl);
+        //console.log(workerUrl);
+				//const worker = new Worker(workerUrl);
 				worker.postMessage({
 					"path": path,
 					"minXLeftCp": minXLeftCp,
