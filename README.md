@@ -6,7 +6,7 @@ CS master degree course by prof. Alberto Alzati (A.Y. 2022/2023).
 
 ## Dev Notes 📝
 
-You can use `npm i` or `yarn` to install dependencies. I personally use `npm` because it's what I use on most of my projects:
+You can use `npm i` or `yarn` to install dependencies. I personally use `npm`:
 
 `npm install` - Installs dependencies. You can use any of those.
 
